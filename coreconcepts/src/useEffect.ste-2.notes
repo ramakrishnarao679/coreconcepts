@@ -1,0 +1,21 @@
+import {useState, useEffect} from 'react'
+
+function App () {
+  const [number, setNumber] = useState(0);
+
+  useEffect(()=>{
+    console.log(`useEffect run's`);
+    setInterval(()=>{
+      setNumber((prev)=>prev+1);
+    }, 2000);
+  }, []);
+
+  console.log(`component rendered`);
+
+return (
+  <div>
+    {number}
+  </div>
+)
+}
+export default App;

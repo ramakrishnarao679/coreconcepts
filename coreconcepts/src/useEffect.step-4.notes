@@ -1,0 +1,22 @@
+import {useState, useEffect} from 'react';
+
+function App(){
+  const [toggle, setToggle] = useState(false);
+
+  useEffect(()=>{
+    console.log(`useEffect run's`);
+
+    //cleanup function
+    return ()=>{
+      console.log(`await before running the useEffect`);
+      console.log(`oky done`);
+    };
+  }, [toggle]);
+  console.log(toggle);
+  return (
+    <div>
+      <button onClick={()=>setToggle(!toggle)}>Toggle</button>
+    </div>
+  )
+}
+export default App;

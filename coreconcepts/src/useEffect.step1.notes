@@ -1,0 +1,32 @@
+import {useState, useEffect} from 'react';
+
+function App(){
+  const [name, setName] = useState(0);
+
+  const [state, setState] = useState({
+    name:'',
+    selected:false,
+  });
+
+  const handleAdd = ()=>{
+    setState((Prev)=> ({...Prev, name}))
+  };
+
+  const handleSelect = ()=>{
+    setState((prev)=>({prev, selected:true}))
+  };
+  useEffect(()=>{
+    console.log(`the state has changed and useEfect run's`);
+  }, [state]);
+
+  console.log(`component rendered`);
+  console.log(`after render`);
+  return (
+    <div>
+      <input type="text" onChange={(e)=>setName(e.target.value)} placeholder="enter your name" />
+      <button onClick={handleAdd}>AddName</button>
+      <button onClick={handleSelect}>Select</button>
+    </div>
+  )
+}
+export default App;
